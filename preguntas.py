@@ -11,9 +11,9 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 
 """
+ 
 
-
-def pregunta_01():
+def pregunta_01():   
     """
     Retorne la suma de la segunda columna.
 
@@ -21,8 +21,12 @@ def pregunta_01():
     214
 
     """
-    return
+    with open('data.csv', mode = 'r') as file:
+        file = file.readlines()
 
+    suma = sum([int(i.strip().split('\t')[1]) for i in file])
+ 
+    return suma
 
 def pregunta_02():
     """
@@ -39,7 +43,15 @@ def pregunta_02():
     ]
 
     """
-    return
+    with open('data.csv', mode = 'r') as file:
+        file = file.readlines()
+    
+    file = list([(var.strip().split('\t')[0]) for var in file])
+    c1 = list(dict.fromkeys(file))
+    c1.sort()
+    ans = list()
+    [ans.append((i,file.count(i))) for i in c1]
+    return ans
 
 
 def pregunta_03():
@@ -57,7 +69,19 @@ def pregunta_03():
     ]
 
     """
-    return
+    with open('data.csv', mode = 'r') as file:
+        file = file.readlines()
+
+    file = list([(var.strip().split('\t')[0]) for var in file])
+    c1 = sorted((list(set([i[0] for i in file]))))
+    ans = list()
+    for l in c1:
+        sum = 0
+        for j in file:
+            if j[0]==l:
+                sum = sum + int(j[1])
+        ans.append((letra,sum))
+    return ans
 
 
 def pregunta_04():
@@ -82,7 +106,16 @@ def pregunta_04():
     ]
 
     """
-    return
+    with open('data.csv', mode = 'r') as file:
+        file = file.readlines()
+    
+    file = list([(i.strip().split('\t')[2][5:7] for i in file)])
+    c1 = list(dict.fromkeys(file))
+    c1.sort()
+    ans = list()
+    [ans.append((i,file.count(i))) for i in c1]
+
+    return ans
 
 
 def pregunta_05():
@@ -100,7 +133,21 @@ def pregunta_05():
     ]
 
     """
-    return
+    with open('data.csv', mode = 'r') as file:
+        file = file.readlines()
+
+    file = list([(i.strip().split('\t')[0:2] for i in file)])
+    c1 = sorted((list(set([i[0] for i in file]))))
+    ans = list()
+
+    for l in c1:
+        numbers = list()
+        for j in file:
+            if j[0]==l:
+                numbers.append(int(j[1]))
+        ans.append((l, max(numbers), min(numbers)))
+
+    return ans
 
 
 def pregunta_06():
@@ -125,7 +172,23 @@ def pregunta_06():
     ]
 
     """
-    return
+    with open('data.csv', mode = 'r') as file:
+        file = file.readlines()
+
+    file = [(i.strip().split('\t')[4])  for i in file]
+    file = ','.join(file).split(',')
+    file = [i.split(':') for i in file]
+    keys = sorted(list(set([i[0] for i in file])))
+    ans = list()
+
+    for k in keys:
+        values = list()
+        for c in file:
+            id c[0]==k:
+            values.append(int(c[1]))
+        ans.append((k, min(values),max(values)))
+
+    return ans
 
 
 def pregunta_07():
@@ -149,7 +212,21 @@ def pregunta_07():
     ]
 
     """
-    return
+    with open('data.csv', mode = 'r') as file:
+        file = file.readlines()
+
+    file = [(i.strip().split('\t')[0:2]) for i in file]
+    c2 = sorted(list(set([int(i[1]) for i in file])))
+    ans = list()
+
+    for a in c2:
+        l = list()
+        for c in file:
+            if int(c[1]) == a:
+                l.append(c[0])
+        ans.append((int(a), l))
+    
+    return ans
 
 
 def pregunta_08():
@@ -174,7 +251,21 @@ def pregunta_08():
     ]
 
     """
-    return
+    with open('data.csv', mode = 'r') as file:
+        file = file.readlines()
+
+    file = [(i.strip().split('\t')[0:2]) for i in file]
+    c2 = sorted(list(set([int(i[1]) for i in file])))
+    ans = list()
+
+    for a in c2:
+        letras_uniq = list()
+        for c in file:
+            if int(c[1]) == a:
+                letras_uniq.append(c[0])
+        ans.append((int(a), sorted(list(set(letras_uniq)))))
+    
+    return ans
 
 
 def pregunta_09():
@@ -197,7 +288,20 @@ def pregunta_09():
     }
 
     """
-    return
+    with open('data.csv', mode = 'r') as file:
+        file = file.readlines()
+
+    file = [(i.strip().split('\t')[4]) for i in file]
+    file = ','.join(file).split(',')
+    file = [i.split(':')[0] for i in file]
+    keys = sorted(list(set(file)))
+    res = dict()
+
+    for key in keys:
+        ans[key] = file.count(key)
+
+    return res
+    
 
 
 def pregunta_10():
@@ -218,7 +322,19 @@ def pregunta_10():
 
 
     """
-    return
+    with open('data.csv', mode='r') as file:
+        file = file.readlines()
+
+    file = [i.strip().split('\t') for i in file]
+    for e in file:
+        del e[1]
+        del e[1]
+        e[1] = len(e[1].split(','))
+        e[2] = len(e[2].split(','))
+    ans = [tuple(i) for i in file]
+
+    return ans
+    
 
 
 def pregunta_11():
@@ -239,7 +355,25 @@ def pregunta_11():
 
 
     """
-    return
+
+    with open('data.csv', mode='r') as file:
+        file = file.readlines()
+
+    original = file.copy()
+    original = [i.strip().split('\t') for i in original]
+    file = [i.strip().split('\t')[3] for i in datos]
+    file = ','.join(file).split(',')
+    c4 = sorted(list(set(file)))
+    ans = dict()
+
+    for l in c4:
+        sum = 0
+        for camp in original:
+            if l in camp[3]:
+                sum += int(camp[1])
+        res[l] = sum
+    
+    return ans
 
 
 def pregunta_12():
@@ -257,4 +391,29 @@ def pregunta_12():
     }
 
     """
-    return
+
+    with open('data.csv', mode='r') as file:
+        file = file.readlines()
+
+    file = [i.strip().split('\t') for i in file]
+
+    ans = {}
+
+    for dato in file:
+        arr = []
+        letra = dato[0]
+
+        for sub in dato[4].split(','):
+
+            if ':' in sub:
+                arr.append(map(str.strip, sub.split(':', 1)))
+        arr = dict(arr)
+        arr = dict([x, int(y)] for x, y in arr.items())
+        suma = sum(arr.values())
+        if letra in ans:
+            ans[letra] += suma
+        else:
+            ans[letra] = suma
+
+    ans = dict(sorted(ans.items()))
+    return ans
