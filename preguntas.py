@@ -185,7 +185,7 @@ def pregunta_06():
         values = list()
         for c in data:
             if c[0]==k:
-            values.append(int(c[1]))
+                values.append(int(c[1]))
         ans.append((k, min(values),max(values)))
 
     return ans
