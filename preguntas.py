@@ -79,7 +79,7 @@ def pregunta_03():
         sum = 0
         for j in data:
             if j[0]==l:
-                sum = sum + int(j[1])
+                sum += int(j[1])
         ans.append((letra,sum))
     return ans
 
