@@ -184,7 +184,7 @@ def pregunta_06():
     for k in keys:
         values = list()
         for c in data:
-            id c[0]==k:
+            if c[0]==k:
             values.append(int(c[1]))
         ans.append((k, min(values),max(values)))
 
