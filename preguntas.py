@@ -21,10 +21,10 @@ def pregunta_01():
     214
 
     """
-    with open('data.csv', mode = 'r') as file:
-        file = file.readlines()
+    with open('data.csv', mode = 'r') as data:
+        data = data.readlines()
 
-    suma = sum([int(var.strip().split('\t')[1]) for var in file])
+    suma = sum([int(var.strip().split('\t')[1]) for var in data])
  
     return suma
 
@@ -43,11 +43,11 @@ def pregunta_02():
     ]
 
     """
-    with open('data.csv', mode = 'r') as file:
-        file = file.readlines()
+    with open('data.csv', mode = 'r') as data:
+        data = data.readlines()
     
-    file = list([(var.strip().split('\t')[0]) for var in file])
-    c1 = list(dict.fromkeys(file))
+    data = list([(var.strip().split('\t')[0]) for var in data])
+    c1 = list(dict.fromkeys(data))
     c1.sort()
     ans = list()
     [ans.append((i,file.count(i))) for i in c1]
@@ -69,15 +69,15 @@ def pregunta_03():
     ]
 
     """
-    with open('data.csv', mode = 'r') as file:
-        file = file.readlines()
+    with open('data.csv', mode = 'r') as data:
+        data = data.readlines()
 
-    file = list([(var.strip().split('\t')[0]) for var in file])
-    c1 = sorted((list(set([i[0] for i in file]))))
+    data = list([(var.strip().split('\t')[0]) for var in data])
+    c1 = sorted((list(set([i[0] for i in data]))))
     ans = list()
     for l in c1:
         sum = 0
-        for j in file:
+        for j in data:
             if j[0]==l:
                 sum = sum + int(j[1])
         ans.append((letra,sum))
@@ -106,14 +106,14 @@ def pregunta_04():
     ]
 
     """
-    with open('data.csv', mode = 'r') as file:
-        file = file.readlines()
+    with open('data.csv', mode = 'r') as data:
+        data = data.readlines()
     
-    file = list([(i.strip().split('\t')[2][5:7] for i in file)])
-    c1 = list(dict.fromkeys(file))
+    data = list([(i.strip().split('\t')[2][5:7] for i in data)])
+    c1 = list(dict.fromkeys(data))
     c1.sort()
     ans = list()
-    [ans.append((i,file.count(i))) for i in c1]
+    [ans.append((i,data.count(i))) for i in c1]
 
     return ans
 
@@ -133,16 +133,16 @@ def pregunta_05():
     ]
 
     """
-    with open('data.csv', mode = 'r') as file:
-        file = file.readlines()
+    with open('data.csv', mode = 'r') as data:
+        data = data.readlines()
 
-    file = list([(i.strip().split('\t')[0:2] for i in file)])
-    c1 = sorted((list(set([i[0] for i in file]))))
+    data = list([(i.strip().split('\t')[0:2] for i in data)])
+    c1 = sorted((list(set([i[0] for i in data]))))
     ans = list()
 
     for l in c1:
         numbers = list()
-        for j in file:
+        for j in data:
             if j[0]==l:
                 numbers.append(int(j[1]))
         ans.append((l, max(numbers), min(numbers)))
@@ -172,18 +172,18 @@ def pregunta_06():
     ]
 
     """
-    with open('data.csv', mode = 'r') as file:
-        file = file.readlines()
+    with open('data.csv', mode = 'r') as data:
+        data = data.readlines()
 
-    file = [(i.strip().split('\t')[4])  for i in file]
-    file = ','.join(file).split(',')
-    file = [i.split(':') for i in file]
-    keys = sorted(list(set([i[0] for i in file])))
+    data = [(i.strip().split('\t')[4])  for i in data]
+    data = ','.join(data).split(',')
+    data = [i.split(':') for i in data]
+    keys = sorted(list(set([i[0] for i in data])))
     ans = list()
 
     for k in keys:
         values = list()
-        for c in file:
+        for c in data:
             id c[0]==k:
             values.append(int(c[1]))
         ans.append((k, min(values),max(values)))
@@ -212,16 +212,16 @@ def pregunta_07():
     ]
 
     """
-    with open('data.csv', mode = 'r') as file:
-        file = file.readlines()
+    with open('data.csv', mode = 'r') as data:
+        data = data.readlines()
 
-    file = [(i.strip().split('\t')[0:2]) for i in file]
-    c2 = sorted(list(set([int(i[1]) for i in file])))
+    data = [(i.strip().split('\t')[0:2]) for i in data]
+    c2 = sorted(list(set([int(i[1]) for i in data])))
     ans = list()
 
     for a in c2:
         l = list()
-        for c in file:
+        for c in data:
             if int(c[1]) == a:
                 l.append(c[0])
         ans.append((int(a), l))
@@ -251,11 +251,11 @@ def pregunta_08():
     ]
 
     """
-    with open('data.csv', mode = 'r') as file:
-        file = file.readlines()
+    with open('data.csv', mode = 'r') as data:
+        data = data.readlines()
 
-    file = [(i.strip().split('\t')[0:2]) for i in file]
-    c2 = sorted(list(set([int(i[1]) for i in file])))
+    data = [(i.strip().split('\t')[0:2]) for i in data]
+    c2 = sorted(list(set([int(i[1]) for i in data])))
     ans = list()
 
     for a in c2:
@@ -288,17 +288,17 @@ def pregunta_09():
     }
 
     """
-    with open('data.csv', mode = 'r') as file:
-        file = file.readlines()
+    with open('data.csv', mode = 'r') as data:
+        data = data.readlines()
 
-    file = [(i.strip().split('\t')[4]) for i in file]
-    file = ','.join(file).split(',')
-    file = [i.split(':')[0] for i in file]
-    keys = sorted(list(set(file)))
+    data = [(i.strip().split('\t')[4]) for i in data]
+    data = ','.join(data).split(',')
+    data = [i.split(':')[0] for i in data]
+    keys = sorted(list(set(data)))
     res = dict()
 
     for key in keys:
-        ans[key] = file.count(key)
+        ans[key] = data.count(key)
 
     return res
     
@@ -322,16 +322,16 @@ def pregunta_10():
 
 
     """
-    with open('data.csv', mode='r') as file:
-        file = file.readlines()
+    with open('data.csv', mode='r') as data:
+        data = data.readlines()
 
-    file = [i.strip().split('\t') for i in file]
-    for e in file:
+    data = [i.strip().split('\t') for i in data]
+    for e in data:
         del e[1]
         del e[1]
         e[1] = len(e[1].split(','))
         e[2] = len(e[2].split(','))
-    ans = [tuple(i) for i in file]
+    ans = [tuple(i) for i in data]
 
     return ans
     
@@ -356,14 +356,14 @@ def pregunta_11():
 
     """
 
-    with open('data.csv', mode='r') as file:
-        file = file.readlines()
+    with open('data.csv', mode='r') as data:
+        data = data.readlines()
 
-    original = file.copy()
+    original = data.copy()
     original = [i.strip().split('\t') for i in original]
-    file = [i.strip().split('\t')[3] for i in datos]
-    file = ','.join(file).split(',')
-    c4 = sorted(list(set(file)))
+    data = [i.strip().split('\t')[3] for i in datos]
+    data = ','.join(data).split(',')
+    c4 = sorted(list(set(data)))
     ans = dict()
 
     for l in c4:
@@ -392,10 +392,10 @@ def pregunta_12():
 
     """
 
-    with open('data.csv', mode='r') as file:
-        file = file.readlines()
+    with open('data.csv', mode='r') as data:
+        data = data.readlines()
 
-    file = [i.strip().split('\t') for i in file]
+    data = [i.strip().split('\t') for i in data]
 
     ans = {}
 
