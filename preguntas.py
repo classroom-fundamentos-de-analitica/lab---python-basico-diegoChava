@@ -371,7 +371,7 @@ def pregunta_11():
         for camp in original:
             if l in camp[3]:
                 sum += int(camp[1])
-        res[l] = sum
+        ans[l] = sum
     
     return ans
 
