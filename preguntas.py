@@ -72,7 +72,7 @@ def pregunta_03():
     with open('data.csv', mode = 'r') as data:
         data = data.readlines()
 
-    data = list([(var.strip().split('\t')[0]) for var in data])
+    data = [(var.strip().split('\t')[0:2]) for var in data]
     c1 = sorted((list(set([i[0] for i in data]))))
     ans = list()
 
@@ -137,7 +137,7 @@ def pregunta_05():
     with open('data.csv', mode = 'r') as data:
         data = data.readlines()
 
-    data = list([(i.strip().split('\t')[0:2] for i in data)])
+    data = [(i.strip().split('\t')[0:2] for i in data)]
     c1 = sorted((list(set([i[0] for i in data]))))
     ans = list()
 
