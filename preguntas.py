@@ -24,7 +24,7 @@ def pregunta_01():
     with open('data.csv', mode = 'r') as data:
         data = data.readlines()
 
-    return sum([int(var.strip().split('\t')[1]) for var in data])
+    return sum([int(var.strip().split('\t')[1]) for var in data])   
  
     
 
