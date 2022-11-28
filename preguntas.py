@@ -110,12 +110,11 @@ def pregunta_04():
     with open('data.csv', mode = 'r') as data:
         data = data.readlines()
     
-    data = list([(i.strip().split('\t')[2][5:7] for i in data)])
+    data = list([(i.strip().split('\t')[2][5:7]) for i in data])
     c1 = list(dict.fromkeys(data))
     c1.sort()
     ans = list()
     [ans.append((i,data.count(i))) for i in c1]
-
     return ans
 
 
@@ -137,7 +136,7 @@ def pregunta_05():
     with open('data.csv', mode = 'r') as data:
         data = data.readlines()
 
-    data = [(i.strip().split('\t')[0:2] for i in data)]
+    data = [(i.strip().split('\t')[0:2]) for i in data]
     c1 = sorted((list(set([i[0] for i in data]))))
     ans = list()
 
@@ -261,7 +260,7 @@ def pregunta_08():
 
     for a in c2:
         letras_uniq = list()
-        for c in file:
+        for c in data:
             if int(c[1]) == a:
                 letras_uniq.append(c[0])
         ans.append((int(a), sorted(list(set(letras_uniq)))))
@@ -296,12 +295,12 @@ def pregunta_09():
     data = ','.join(data).split(',')
     data = [i.split(':')[0] for i in data]
     keys = sorted(list(set(data)))
-    res = dict()
+    ans = dict()
 
     for key in keys:
         ans[key] = data.count(key)
 
-    return res
+    return ans
     
 
 
@@ -362,7 +361,7 @@ def pregunta_11():
 
     original = data.copy()
     original = [i.strip().split('\t') for i in original]
-    data = [i.strip().split('\t')[3] for i in datos]
+    data = [i.strip().split('\t')[3] for i in data]
     data = ','.join(data).split(',')
     c4 = sorted(list(set(data)))
     ans = dict()
