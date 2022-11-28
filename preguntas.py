@@ -75,12 +75,13 @@ def pregunta_03():
     data = list([(var.strip().split('\t')[0]) for var in data])
     c1 = sorted((list(set([i[0] for i in data]))))
     ans = list()
+
     for l in c1:
         sum = 0
         for j in data:
             if j[0]==l:
                 sum += int(j[1])
-        ans.append((letra,sum))
+        ans.append((l,sum))
     return ans
 
 
