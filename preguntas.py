@@ -399,7 +399,7 @@ def pregunta_12():
 
     ans = {}
 
-    for dato in file:
+    for dato in data:
         arr = []
         letra = dato[0]
 
