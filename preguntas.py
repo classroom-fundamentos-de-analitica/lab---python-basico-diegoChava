@@ -50,7 +50,7 @@ def pregunta_02():
     c1 = list(dict.fromkeys(data))
     c1.sort()
     ans = list()
-    [ans.append((i,file.count(i))) for i in c1]
+    [ans.append((i,data.count(i))) for i in c1]
     return ans
 
 
